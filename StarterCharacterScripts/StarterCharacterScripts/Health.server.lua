@@ -1,12 +1,10 @@
-local hp = script.Parent.CurrentHp
-local currenthp = hp.Value
 local max = 100
 local char = script.Parent
-local hum = char.Humanoid
-local player = game.Players:GetPlayerFromCharacter(char)
+local plr = game.Players
+local pfc = game.Players:GetPlayerFromCharacter(char)
+local currenthp = pfc:WaitForChild("HpStat")
 
-
-hp.Changed:Connect(function(newhp)
+currenthp.Changed:Connect(function(newhp) -- watches for any change on the HpStat, its a bit finnicky
 	local healthdiff = newhp - currenthp
 	if newhp == 0 then
 		print("DEAD")
